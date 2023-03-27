@@ -1,22 +1,21 @@
-// aktuelles Datum
+//aktuelles Datum
 function currentDay() {
-    const Wochentag = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
-    const Monate = ['Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'October', 'November', 'Dezember'];
+    const Wochentag = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
+    const Monat = ['Jänner', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'];
     const jetzt = new Date();
-    const dayOfWeek = Wochentag[jetzt.getDay()];
-    const dayOfMonth = jetzt.getDate();
-    const month = Monate[jetzt.getMonth()];
-    const year = jetzt.getFullYear(); 
-    const dateString = `${dayOfWeek}, ${month} ${addLeadingZero(dayOfMonth)}, ${year}`;
+    const Wochentage = Wochentag[jetzt.getUTCDay()];
+    const Tag = jetzt.getUTCDate();
+    const Monate = Monat[jetzt.getUTCMonth()];
+    const Jahr = jetzt.getFullYear();
+    const dateString = `${Wochentage}, ${Monate}, ${addLeadingZero(Tag)}, ${Jahr}`;
     document.getElementById("currentDay").innerText = dateString;
-  }
-  
-  // aktuelle Uhrzeit
-  function currentTime() {
+}
+//aktuelle Uhrzeit
+function currentTime() {
     const jetzt = new Date();
-    const Stunde = addLeadingZero(jetzt.getHours());
-    const Minute = addLeadingZero(jetzt.getMinutes());
-    const Sekunde = addLeadingZero(jetzt.getSeconds()); 
+    const Stunde = addLeadingZero(jetzt.getUTCHours());
+    const Minute = addLeadingZero(jetzt.getUTCMinutes());
+    const Sekunde = addLeadingZero(jetzt.getUTCSeconds());
     const timeString = `${Stunde}:${Minute}:${Sekunde}`;
     document.getElementById("currentTime").innerText = timeString;
   }
@@ -26,23 +25,23 @@ function currentDay() {
     if (value < 10) {
       return `0${value}`;
     } else {
+        
       return value.toString();
     }
   }
   
-  // aktuelle Seite auf Browser geöffnet
+  // time on page mit alert
   function timeOnPage() {
     const jetzt = new Date();
-    const timeElapsed = jetzt - window.performance.timing.navigationStart;
-    const Stunde = addLeadingZero(Math.floor((timeElapsed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-    const Minute = addLeadingZero(Math.floor((timeElapsed % (1000 * 60 * 60)) / (1000 * 60)));
-    const Sekunde = addLeadingZero(Math.floor((timeElapsed % (1000 * 60)) / 1000));
+    const timeOnPage = jetzt - window.PerformanceNavigationTiming;
+    const Stunde = addLeadingZero(Math.floor((timeOnPage % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+    const Minute = addLeadingZero(Math.floor((timeOnPage % (1000 * 60 * 60)) / (1000 * 60)));
+    const Sekunde = addLeadingZero(Math.floor((timeOnPage % (1000 * 60)) / 1000));
     const timeString = `${Stunde}:${Minute}:${Sekunde}`;
-    alert(`You have been on this page for  ${timeString}`);
+    window.alert(`You have been on this page for  ${timeString}`);
   }
   
   // Aktualisieren
   function refresh() {
     location.reload();
-  }
-  
+}
