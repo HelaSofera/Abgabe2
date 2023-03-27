@@ -1,0 +1,32 @@
+*{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;  
+}
+
+#content {
+    background-color: rgba(217, 209, 218, 0.378);
+    position: absolute;
+    width: 1000px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+body {
+    background-image: url("bck.jpg");  
+}
+
+h1 {
+    font-size: 80px;   
+}
+
+p {
+    font-size: 50px; 
+}
+
+
