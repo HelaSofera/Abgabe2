@@ -13,7 +13,7 @@ function currentDay() {
 //aktuelle Uhrzeit
 function currentTime() {
     const jetzt = new Date();
-    const Stunde = addLeadingZero(jetzt.getUTCHours());
+    const Stunde = addLeadingZero(jetzt.getHours());
     const Minute = addLeadingZero(jetzt.getUTCMinutes());
     const Sekunde = addLeadingZero(jetzt.getUTCSeconds());
     const timeString = `${Stunde}:${Minute}:${Sekunde}`;
